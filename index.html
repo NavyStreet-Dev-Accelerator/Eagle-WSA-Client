@@ -4,9 +4,30 @@
     <meta charset="utf-8">
     <title>Web Scanner</title>
     <link rel="stylesheet" href="./css/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="./js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <h1>hi</h1>
+    <header>
+      <h1>Website Text Scanner</h1>
+    </header>
+    <main>
+      <div class="container">
+        <div class="search-form">
+          <form>
+            <!-- URL -->
+            <label for="url">Enter a website URL</label>
+            <input type="text" id="url"></input>
+            <!-- Word or phrase -->
+            <label for="phrase">Enter a word or phrase to scan for</label>
+            <input type="text" id="phrase"></input>
+            <!-- Captcha -->
+            <p>Captchas here</p>
+            <!-- Submit -->
+            <input type="submit" value="Scan Website Now"></input>
+          </form>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

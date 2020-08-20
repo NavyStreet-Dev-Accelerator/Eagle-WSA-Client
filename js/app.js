@@ -1,20 +1,27 @@
 class Form extends React.Component {
   state = {
-
+    searchUrl: ''
   }
 
   ///////
   //URL Input
   //////
+  getUrlInput = (event) => {
+    this.setState(
+      {searchUrl: event.target.value}
+    )
+    console.log(this.state.searchUrl);
+  }
+
 
   ///////
-  //
+  //Search
   ///////
-  // 
-  // search = (event) => {
-  //   event.preventDefault();
-  //   console.log('searching');
-  // }
+
+  search = (event) => {
+    event.preventDefault();
+    console.log('searching');
+  }
 
 
   render = () => {
@@ -22,7 +29,7 @@ class Form extends React.Component {
       <div className="search-form">
         <form onSubmit={this.search}>
           <label htmlFor="url">Enter a website URL</label>
-          <input type="text" id="url" {this.getUrl}></input>
+          <input type="text" id="url" onKeyUp={this.getUrlInput}></input>
           <label htmlFor="phrase">Enter a word or phrase to scan for</label>
           <input type="text" id="phrase"></input>
           <p>Captchas here</p>

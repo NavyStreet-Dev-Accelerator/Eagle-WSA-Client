@@ -8,7 +8,7 @@ body {
 header {
   text-align: center;
   padding-top: 50px;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 /* MAIN */
@@ -27,12 +27,19 @@ form {
   text-align: center;
 }
 
+/*Labels*/
+label {
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
 /*Text inputs*/
 
 input[type=text] {
   width: 80%;
   margin: auto;
   border: 2px solid rgba(0, 0, 0, 0.6);
+  height: 25px;
 }
 
 /*Submit button*/
@@ -40,6 +47,7 @@ input[type=submit] {
   background: rgb(29, 161, 250);
   color: white;
   font-size: 16px;
+  font-weight: bold;
   width: 40%;
   height: 50px;
   margin: auto;
@@ -50,4 +58,10 @@ input[type=submit] {
 
 form p {
   text-align: center;
+  background: grey;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+/*RESULTS*/

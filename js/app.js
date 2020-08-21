@@ -33,42 +33,38 @@ class App extends React.Component {
     results: ''
   }
 
-  ///////
-  //URL Input
-  //////
-  getUrlInput = (event) => {
+
+//URL Input
+  setUrlInput = (event) => {
     this.setState(
       {searchUrl: event.target.value}
     )
     // console.log(this.state.searchUrl);
   }
 
-  /////////////////////
-  //Word or phrase input
-  ///////////////////
-  getWordInput = () => {
+
+//Word or phrase input
+  setWordInput = () => {
     this.setState(
       {searchWord: event.target.value}
     )
     // console.log(this.state.searchWord);
   }
 
-  ///////
-  //Search
-  ///////
 
+//Search
   search = (event) => {
     event.preventDefault();
     this.setState(
-      {results: `Searching for ${this.state.searchWord} at the url ${this.state.searchUrl}`}
+      {results: `Searching for the word ${this.state.searchWord} at the url ${this.state.searchUrl}`}
     )
   }
 
   render = () => {
     return (
       <div className="container">
-        <Form search={this.search} getWordInput={this.getWordInput}
-        getUrlInput={this.getUrlInput}></Form>
+        <Form search={this.search} getWordInput={this.setWordInput}
+        getUrlInput={this.setUrlInput}></Form>
         <Results results={this.state.results}></Results>
       </div>
     )

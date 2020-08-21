@@ -1,7 +1,36 @@
 class Form extends React.Component {
+
+  render = () => {
+    return (
+      <div className="search-form">
+        <form onSubmit={this.props.search}>
+          <label htmlFor="url">Enter a website URL</label>
+          <input type="text" id="url" onKeyUp={this.props.getUrlInput}></input>
+          <label htmlFor="phrase">Enter a word or phrase to scan for</label>
+          <input type="text" id="phrase" onKeyUp={this.props.getWordInput}></input>
+          <p>Captchas here</p>
+          <input type="submit" value="Scan Website Now"></input>
+        </form>
+      </div>
+    )
+  }
+}
+
+class Results extends React.Component {
+  render = () => {
+    return (
+      <div className="results">
+        <p>{this.props.results}</p>
+      </div>
+    )
+  }
+}
+
+class App extends React.Component {
   state = {
     searchUrl: '',
-    searchWord: ''
+    searchWord: '',
+    results: ''
   }
 
   ///////
@@ -30,42 +59,17 @@ class Form extends React.Component {
 
   search = (event) => {
     event.preventDefault();
-    console.log(`Searching for ${this.state.searchWord} at the url ${this.state.searchUrl}`);
-  }
-
-
-  render = () => {
-    return (
-      <div className="search-form">
-        <form onSubmit={this.search}>
-          <label htmlFor="url">Enter a website URL</label>
-          <input type="text" id="url" onKeyUp={this.getUrlInput}></input>
-          <label htmlFor="phrase">Enter a word or phrase to scan for</label>
-          <input type="text" id="phrase" onKeyUp={this.getWordInput}></input>
-          <p>Captchas here</p>
-          <input type="submit" value="Scan Website Now"></input>
-        </form>
-      </div>
+    this.setState(
+      {results: `Searching for ${this.state.searchWord} at the url ${this.state.searchUrl}`}
     )
   }
-}
 
-class Results extends React.Component {
-  render = () => {
-    return (
-      <div className="results">
-        <p>Results will show here.</p>
-      </div>
-    )
-  }
-}
-
-class App extends React.Component {
   render = () => {
     return (
       <div className="container">
-        <Form></Form>
-        <Results></Results>
+        <Form search={this.search} getWordInput={this.getWordInput}
+        getUrlInput={this.getUrlInput}></Form>
+        <Results results={this.state.results}></Results>
       </div>
     )
   }

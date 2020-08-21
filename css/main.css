@@ -56,15 +56,11 @@ input[type=submit] {
 
 /*Captcha*/
 
-form p {
-  text-align: center;
-  background: grey;
-  width: 30%;
-  margin-left: auto;
-  margin-right: auto;
+.g-recaptcha {
   margin-top: 2em;
   margin-bottom: 2em;
-  padding: 15px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*RESULTS*/

@@ -5,7 +5,7 @@ class Form extends React.Component {
       <div className="search-form">
         <form onSubmit={this.props.onSearch}>
           <label htmlFor="url">Enter a website URL</label>
-          <input type="text" id="url" onKeyUp={this.props.onUrlInput}></input>
+          <input type="url" id="url" onKeyUp={this.props.onUrlInput}></input>
           <label htmlFor="phrase">Enter a word or phrase to scan for</label>
           <input type="text" id="phrase" onKeyUp={this.props.onWordInput}></input>
           <div className="g-recaptcha" data-sitekey="6Ld7-MEZAAAAAA_UuOFPKll6Qs8yWYmzd8d34_0p" data-callback="verifyCaptcha"></div>
@@ -27,7 +27,12 @@ class Results extends React.Component {
   render = () => {
     return (
       <div className="results">
-        <p>{this.props.results}</p>
+      {
+        this.props.results ?
+        <p>{this.props.results}</p> :
+        <p>Results will show here.</p>
+      }
+
       </div>
     )
   }
@@ -37,7 +42,6 @@ class App extends React.Component {
   state = {
     searchUrl: '',
     searchWord: '',
-    results: '',
     showCaptchaError: false
   }
 

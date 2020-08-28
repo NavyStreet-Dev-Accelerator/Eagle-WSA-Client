@@ -75,7 +75,6 @@ class App extends React.Component {
         {showCaptchaError: true}
       )
     }
-    //the user passed the captcha test and the search function can continue
     else {
       axios.post(
         "https://rocky-beach-31965.herokuapp.com/websites"
@@ -94,9 +93,9 @@ class App extends React.Component {
       <div className="container">
         <Form onSearch={this.handleSearch} onWordInput={this.handleWordInput}
         onUrlInput={this.handleUrlInput}
-        onCaptchaError={this.state.showCaptchaError}></Form>
+        onCaptchaError={this.state.showCaptchaError}/>
         <Results searchWord={this.state.searchWord}
-        wordCount={this.state.wordCount}></Results>
+        wordCount={this.state.wordCount}/>
       </div>
     )
   }

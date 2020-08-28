@@ -35,7 +35,8 @@ label {
 
 /*Text inputs*/
 
-input[type=text] {
+input[type=text],
+input[type=url]  {
   width: 80%;
   margin: auto;
   border: 2px solid rgba(0, 0, 0, 0.6);

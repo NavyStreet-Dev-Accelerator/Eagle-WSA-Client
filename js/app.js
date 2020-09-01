@@ -16,7 +16,13 @@ class Form extends React.Component {
             ""
           }
           </div>
-          <input type="submit" value="Scan Website Now"></input>
+          {
+            this.props.searchInitiated ?
+            <div id="scanner-load-wheel">
+              <img src="https://media2.giphy.com/media/3o7TKtnuHOHHUjR38Y/giphy.gif" alt=""/>
+            </div> :
+            <input type="submit" value="Scan Website Now"></input>
+          }
         </form>
       </div>
     )
@@ -28,10 +34,17 @@ class Results extends React.Component {
     return (
       <div className="results">
       {
-        this.props.wordCount ?
-        <p>Found {this.props.searchWord} {this.props.wordCount} times.</p> :
-        <p>Results will show here.</p>
+        this.props.searchInitiated ?
+        <p>Scanning....</p> :
+        <div>
+        {
+          this.props.wordCount ?
+          <p>Found {this.props.searchWord} {this.props.wordCount} times.</p> :
+          <p>Results will show here.</p>
+        }
+        </div>
       }
+
 
       </div>
     )
@@ -43,7 +56,8 @@ class App extends React.Component {
     searchUrl: '',
     searchWord: '',
     showCaptchaError: false,
-    websiteIsValid: null
+    websiteIsValid: null,
+    searchInitiated: false
   }
 
 
@@ -64,6 +78,27 @@ class App extends React.Component {
     // console.log(this.state.searchWord);
   }
 
+//call scanner
+  handleScanner = () => {
+    axios.post(
+      "https://rocky-beach-31965.herokuapp.com/websites"
+    ).then((response) => {
+      // console.log(response.data);
+        this.setState({
+          wordCount: response.data,
+          showCaptchaError: false,
+          searchInitiated: false
+        })
+      })
+  }
+
+  //seach animation
+  handleSearchAnimation = () => {
+    this.setState({
+      searchInitiated: true
+    })
+  }
+
 
 //Search
   handleSearch = (event) => {
@@ -76,15 +111,10 @@ class App extends React.Component {
       )
     }
     else {
-      axios.post(
-        "https://rocky-beach-31965.herokuapp.com/websites"
-      ).then((response) => {
-        // console.log(response.data);
-          this.setState({
-            wordCount: response.data,
-            showCaptchaError: false
-          })
-      })
+      // console.log(this.state);
+      this.handleSearchAnimation()
+      // console.log(this.state);
+      setTimeout(this.handleScanner, 3000)
     }
   }
 
@@ -93,9 +123,11 @@ class App extends React.Component {
       <div className="container">
         <Form onSearch={this.handleSearch} onWordInput={this.handleWordInput}
         onUrlInput={this.handleUrlInput}
-        onCaptchaError={this.state.showCaptchaError}/>
+        onCaptchaError={this.state.showCaptchaError}
+        searchInitiated={this.state.searchInitiated}/>
         <Results searchWord={this.state.searchWord}
-        wordCount={this.state.wordCount}/>
+        wordCount={this.state.wordCount}
+        searchInitiated={this.state.searchInitiated}/>
       </div>
     )
   }

@@ -44,7 +44,7 @@ input[type=url]  {
 }
 
 /*Submit button*/
-input[type=submit] {
+input[type=submit], #scanner-load-wheel {
   background: rgb(29, 161, 250);
   color: white;
   font-size: 16px;
@@ -54,6 +54,19 @@ input[type=submit] {
   margin: auto;
   border: 2px solid rgba(0, 0, 0, 0.6);
 }
+
+#scanner-load-wheel {
+  background: rgba(29, 120, 250, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#scanner-load-wheel img {
+  height: 50px;
+  width: 50px;
+}
+
 
 /*Captcha*/
 

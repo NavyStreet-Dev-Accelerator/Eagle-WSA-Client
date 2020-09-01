@@ -43,6 +43,10 @@ input[type=url]  {
   height: 25px;
 }
 
+input[type=submit]:hover {
+  cursor: pointer;
+}
+
 /*Submit button*/
 input[type=submit], #scanner-load-wheel {
   background: rgb(29, 161, 250);

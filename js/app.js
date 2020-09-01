@@ -8,7 +8,7 @@ class Form extends React.Component {
           <input type="url" id="url" onKeyUp={this.props.onUrlInput}></input>
           <label htmlFor="phrase">Enter a word or phrase to scan for</label>
           <input type="text" id="phrase" onKeyUp={this.props.onWordInput}></input>
-          <div className="g-recaptcha" data-sitekey="6Ld7-MEZAAAAAA_UuOFPKll6Qs8yWYmzd8d34_0p" data-callback="verifyCaptcha"></div>
+          <div className="g-recaptcha" data-sitekey="6LcLRsYZAAAAAJvEgOoZd7NXeSprd8iM1jgND4eW" data-callback="verifyCaptcha"></div>
           <div>
           {
             this.props.onCaptchaError ?
